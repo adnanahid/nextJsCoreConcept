@@ -39,7 +39,7 @@ export default function Service() {
     },
   ];
   return (
-    <div className="container mx-auto">
+    <div className="">
       <h1 className="text-4xl font-bold text-center mt-12">Service Page</h1>
       <div className="grid grid-cols-5 gap-10 mt-12">
         {services.map((service) => (
@@ -48,7 +48,7 @@ export default function Service() {
               <h1 className="text-center text-2xl font-bold">
                 {service.title}
               </h1>
-              <h3>Price: {service.price}</h3>
+              <h3 className="text-center">Price: {service.price}</h3>
             </div>
           </Link>
         ))}

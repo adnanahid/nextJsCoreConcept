@@ -42,7 +42,7 @@ export default function page({ params }: { params: { id: string } }) {
   const filterData = services.find((service) => service.id === id);
   return (
     <div>
-      <div className="grid grid-cols-5 gap-10 mt-12">
+      <div className="max-w-screen-sm flex items-center justify-center h-[calc(100vh-200px)] mx-auto">
         {filterData ? (
           <div className="space-y-5">
             <h1 className="text-center text-2xl font-bold">
