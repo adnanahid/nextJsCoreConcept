@@ -1,14 +1,17 @@
+import dbConnect from "../../../lib/dbConnect";
+
 export async function GET() {
+  const result = await dbConnect("menu").find({}).toArray();
+
+  return Response.json(result);
+}
+
+export async function POST() {
   const data = {
     name: "Nahid Hasan",
     age: 22,
   };
 
-  return Response.json({data});
-}
-
-export async function POST(req) {
-  const postData = await req.json();
-
-  return Response.json({ postData });
+  const result = await dbConnect("menu").insertOne(data);
+  return Response.json(result);
 }

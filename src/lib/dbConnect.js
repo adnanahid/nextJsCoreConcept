@@ -1,7 +1,7 @@
 import { MongoClient, ServerApiVersion } from "mongodb";
 
-export default function dbConnect() {
-  const uri = process.env.MONGO_URI;
+export default function dbConnect(collection_name) {
+  const uri = "mongodb+srv://final-project:fbYwX33sTz4R4fY0@cluster0.kgmqz.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
   const client = new MongoClient(uri, {
     serverApi: {
       version: ServerApiVersion.v1,
@@ -9,5 +9,5 @@ export default function dbConnect() {
       deprecationErrors: true,
     },
   });
-  return client.db(process.env.DB_NAME);
+  return client.db("finalProjectDB").collection(collection_name);
 }

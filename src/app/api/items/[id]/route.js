@@ -1,6 +1,9 @@
-export async function POST(req, params) {
-  const p = await params;
-  console.log(p);
+import { ObjectId } from "mongodb";
+import dbConnect from "../../../../lib/dbConnect";
 
-  return Response.json( p );
+export async function GET(req, { params }) {
+  const result = await dbConnect("menu").findOne({
+    _id: new ObjectId(params.id),
+  });
+  return Response.json(result);
 }
