@@ -7,3 +7,10 @@ export async function GET(req, { params }) {
   });
   return Response.json(result);
 }
+
+export async function DELETE(req, { params }) {
+  const result = await dbConnect("menu").deleteOne({
+    _id: new ObjectId(params.id),
+  });
+  return Response.json(result);
+}
