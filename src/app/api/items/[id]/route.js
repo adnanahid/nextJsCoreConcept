@@ -14,3 +14,17 @@ export async function DELETE(req, { params }) {
   });
   return Response.json(result);
 }
+
+export async function PATCH(req, { params }) {
+  const data = {
+    name: "Nahid Hasan",
+    age: 25,
+  };
+  const result = await dbConnect("menu").updateOne(
+    {
+      _id: new ObjectId(params.id),
+    },
+    { $set: data }
+  );
+  return Response.json(result);
+}
