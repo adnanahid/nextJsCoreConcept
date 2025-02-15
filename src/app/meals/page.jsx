@@ -3,7 +3,10 @@ import SearchInput from "./components/searchInput";
 
 async function getMeals(search = "") {
   const res = await fetch(
-    `https://www.themealdb.com/api/json/v1/1/search.php?s=${search}`
+    `https://www.themealdb.com/api/json/v1/1/search.php?s=${search}`,
+    {
+      cache: "force-cache",
+    }
   );
   const data = await res.json();
   return data.meals || [];
@@ -23,7 +26,12 @@ export default async function Meals({ searchParams }) {
         {meals.length > 0 ? (
           meals.map((meal) => (
             <div key={meal.idMeal} className="mb-6 p-4 shadow-md">
-              <img src={meal?.strMealThumb} alt={meal?.strMeal} width={640} height={440}/>
+              <img
+                src={meal?.strMealThumb}
+                alt={meal?.strMeal}
+                width={640}
+                height={440}
+              />
               <h2 className="text-xl font-bold">{meal?.strMeal}</h2>
               <p className="text-gray-600">Origin: {meal.strArea}</p>
               <p>

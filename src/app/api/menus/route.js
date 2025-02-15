@@ -1,3 +1,4 @@
+import { revalidatePath } from "next/cache";
 import dbConnect from "../../../lib/dbConnect";
 
 export async function GET() {
@@ -6,12 +7,10 @@ export async function GET() {
   return Response.json(result);
 }
 
-export async function POST() {
-  const data = {
-    name: "Nahid Hasan",
-    age: 22,
-  };
+export async function POST(req) {
+  const data = await req.json();
 
   const result = await dbConnect("menu").insertOne(data);
+  revalidatePath("/menus");
   return Response.json(result);
 }

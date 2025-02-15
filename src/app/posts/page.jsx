@@ -1,7 +1,9 @@
 import Link from "next/link";
 
 export async function getPosts() {
-  const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+  const res = await fetch("https://jsonplaceholder.typicode.com/posts", {
+    cache: "force-cache",
+  });
   return res.json();
 }
 
